@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>January Progress Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>January Progress Calculator</h1>
+        <p id="result">Click the button to calculate the percentage of the way through January.</p>
+        <button onclick="calculateProgress()">Calculate</button>
+    </div>
+
+    <script>
+        function calculateProgress() {
+            const now = new Date();
+            const startOfJanuary = new Date(now.getFullYear(), 0, 1);
+            const endOfJanuary = new Date(now.getFullYear(), 1, 1);
+
+            const totalDurationJanuary = (endOfJanuary - startOfJanuary) / (1000 * 60 * 60);
+            const elapsedDuration = (now - startOfJanuary) / (1000 * 60 * 60);
+
+            const percentageThroughJanuary = (elapsedDuration / totalDurationJanuary) * 100;
+
+            document.getElementById('result').innerText = `You are ${percentageThroughJanuary.toFixed(2)}% of the way through January to the hour.`;
+        }
+    </script>
+</body>
+</html>
